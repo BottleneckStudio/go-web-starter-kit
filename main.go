@@ -13,11 +13,10 @@ import (
 
 func main() {
 	logger := log.New(os.Stdout, "DEBUG: ", log.LstdFlags|log.Lshortfile)
-	r := chi.NewRouter()
 	serverConfig := server.Config{
 		Server: &server.Server{
 			Logger: logger,
-			Router: r,
+			Router: chi.NewRouter(),
 			TLSConfig: &tls.Config{
 				// Causes servers to use Go's default ciphersuite preferences,
 				// which are tuned to avoid attacks. Does nothing on clients.
